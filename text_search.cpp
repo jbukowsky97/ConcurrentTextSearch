@@ -54,6 +54,12 @@ int main(int argc, char** argv) {
     }
     closedir(searchFilesDir);
 
+    /* check if no files */
+    if (numFiles == 0) {
+        std::cout << "No files in directory" << std::endl;
+        return -1;
+    }
+
     /* create upstream and downstream pipes needed */
     int downstream[numFiles][2];
     int upstream[numFiles][2];
