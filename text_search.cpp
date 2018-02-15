@@ -211,11 +211,13 @@ int main(int argc, char** argv) {
     /* start loop to read in from user */
     std::string searchString;
     while (true) {
+        std::cout << std::endl;        
         std::cout << "Enter string to search for:\t";
         /* get input and check if it is alphabetical or not */
         getline(std::cin, searchString);
         if (!std::regex_match(searchString, std::regex("[A-Za-z ]+"))) {
             /* tell children to exit */
+            std::cout << "Non-alphabetical string entered, exiting..." << std::endl;
             for (int i = 0; i < numFiles; i++) {
                 if (kill(childPids[i], SIGUSR1) < 0) {
                     std::cout << "Error sending signal to child" << std::endl;
@@ -256,7 +258,7 @@ int main(int argc, char** argv) {
     int exitCount = 0;
     for (int i = 0; i < numFiles; i++) {
         who = wait(&status);
-        std::cout << "Child with PID " + std::to_string((long) who) + " exited with status " + std::to_string(status) << std::endl;
+        std::cout << "\tChild with PID " + std::to_string((long) who) + " exited with status " + std::to_string(status) << std::endl;
         exitCount++;
     }
     if (exitCount == numFiles) {
