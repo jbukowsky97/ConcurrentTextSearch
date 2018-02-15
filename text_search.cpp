@@ -24,6 +24,8 @@ void childSignalHandler(int sig_num)
 /******************************************
  * CIS 452 Concurrent Text Search
  * 
+ * Jonah Bukowsky
+ * 
  * Spawns a child process for each file
  * found inside of folder, searches text
  * files with strings provided by user
