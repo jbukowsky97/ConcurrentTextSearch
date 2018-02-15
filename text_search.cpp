@@ -134,7 +134,7 @@ int main(int argc, char** argv) {
         }
 
         /* read filename designated by parent */
-        char filename[100];
+        char filename[1000];
         if (read(downstream[childIndex][0], filename, sizeof(filename)) < 0) {
             std::cout << "Error reading" << std::endl;
             return -1;
